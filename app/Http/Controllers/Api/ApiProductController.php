@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
+use App\http\Requests\CreateProductRequest;
+use App\http\Requests\UpdateProductRequest;
+
 class ApiProductController extends Controller
 {
     public function index()
@@ -18,7 +21,7 @@ class ApiProductController extends Controller
                 ]);
     }
 
-    public function create(Request $request)
+    public function store(CreateProductRequest $request)
     {
         $product = Product::create($request->all());
         
@@ -29,7 +32,7 @@ class ApiProductController extends Controller
         ], 200);
     }
 
-    public function store(Request $request, Product $product)
+    public function update(UpdateProductRequest $request, Product $product)
     {
         $product->update($request->all());
         
@@ -43,7 +46,7 @@ class ApiProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        
+
         return response()->json([
             'status' => true,
             'message' => "Product Deleted successfully!",

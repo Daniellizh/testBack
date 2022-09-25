@@ -20,4 +20,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('products', ApiProductController::class);
+Route::get('products', [ApiProductController::class, 'index']);
+Route::post('products', [ApiProductController::class, 'store']);
+Route::patch('products/{product}', [ApiProductController::class,'update']);
+Route::delete('products/{product}', [ApiProductController::class,'destroy']);
+
+    
