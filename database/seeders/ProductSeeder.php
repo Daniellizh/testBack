@@ -19,7 +19,7 @@ class ProductSeeder extends Seeder
 
     public function run()
     {
-        for($count=0;$count<10;$count++){
+        for($count=0;$count<50;$count++){
             DB::table('products')->insert([
                 'category_id' => Category::inRandomOrder()->take(1)->first()->id,
                 'name' => Str::random(10),
