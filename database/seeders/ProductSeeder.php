@@ -23,7 +23,6 @@ class ProductSeeder extends Seeder
             DB::table('products')->insert([
                 'category_id' => Category::inRandomOrder()->take(1)->first()->id,
                 'name' => Str::random(10),
-                'code' => Str::random(10),
                 'description'  => Str::random(100),
                 'price'  => rand(100, 2500),
                 'updated_at' => date("Y-m-d H:i:s"),

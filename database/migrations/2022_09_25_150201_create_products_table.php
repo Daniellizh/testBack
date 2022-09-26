@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->integer('category_id');
             $table->string('name');
-            $table->string('code');
             $table->text('description')->nullable();
             $table->double('price')->default(0);
             $table->timestamps();
