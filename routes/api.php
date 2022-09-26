@@ -21,8 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('products', [ApiProductController::class, 'index']);
-Route::post('products', [ApiProductController::class, 'store']);
-Route::patch('products/{product}', [ApiProductController::class,'update']);
-Route::delete('products/{product}', [ApiProductController::class,'destroy']);
+Route::post('products', [ApiProductController::class, 'store'])->name('api.create');
+Route::patch('products/{product}', [ApiProductController::class,'update'])->name('api.update');
+Route::delete('products/{product}', [ApiProductController::class,'destroy'])->name('api.delete');
 
     

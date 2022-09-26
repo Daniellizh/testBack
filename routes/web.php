@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [MainController::class, 'index']);
+Route::get('/categories', [MainController::class, 'categories'])->name('categories');
+Route::get('/{category}', [MainController::class, 'category'])->name('category');
+Route::get('/{category}/{product?}', [MainController::class, 'product']);
 
 Auth::routes();
 

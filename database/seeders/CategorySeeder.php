@@ -15,7 +15,7 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        $lapton = Category::create(['name' => 'laptop']);
-        $phone = Category::create(['name' => 'phone']);
+        $lapton = Category::create(['name' => 'MacBook', 'code' => 'laptop']);
+        $phone = Category::create(['name' => 'iPhone', 'code' => 'phone']);
     }
 }
