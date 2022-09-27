@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Product;
 use App\Models\Category;
 
 class MainController extends Controller
 {
     public function index(){
-        return view('welcome');
+        $products = Product::paginate(20);
+        return view('home', compact('products'));
     }
 
     public function categories(){
@@ -22,7 +24,7 @@ class MainController extends Controller
         return view('category', compact('category'));
     }
 
-    public function product($product = null){
+    public function product($category, $product = null){
         return view('product', ['product' => $product]);
     }
 }
