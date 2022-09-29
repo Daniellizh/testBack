@@ -24,6 +24,7 @@ class ProductSeeder extends Seeder
                 'category_id' => Category::inRandomOrder()->take(1)->first()->id,
                 'name' => Str::random(10),
                 'description'  => Str::random(100),
+                'code' => Str::random(10),
                 'price'  => rand(100, 2500),
                 'updated_at' => date("Y-m-d H:i:s"),
                 'created_at' => date("Y-m-d H:i:s"),

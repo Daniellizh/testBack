@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Order;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 
 class BasketController extends Controller
 {
@@ -14,8 +15,12 @@ class BasketController extends Controller
         $orderId = session('orderId');
         if (!is_null($orderId)) {
             $order = Order::findOrFail($orderId);
+            return view('basket', compact('order'));
+        }elseif(empty($orderId)){
+            return redirect()->route('index')->with('success','Ваша корзина пуста!');
         }
-        return view('basket', compact('order'));
+            
+        
     }
 
     public function basketConfirm(Request $request)
@@ -61,6 +66,11 @@ class BasketController extends Controller
             $pivotRow->update();
         } else {
             $order->products()->attach($productId);
+        }
+
+        if (Auth::check()) {
+            $order->user_id = Auth::id();
+            $order->save();
         }
 
         $product = Product::find($productId);

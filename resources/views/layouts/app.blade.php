@@ -36,7 +36,13 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('basket') }}">Basket</a>
                         </li>
+                        @if ($message = Session::get('success'))
+                            <li class="nav-item">
+                                <p>{{ $message }}</p>
+                            </li>
+                        @endif
                     </ul>
+                    
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">

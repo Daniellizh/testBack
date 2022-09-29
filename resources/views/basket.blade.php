@@ -36,11 +36,10 @@
                                     </form>
                                 </div>
                             </td>
-                            @endforeach
-                        <tr>
                             <td>{{ $product->price }}</td>
                             <td>{{ $product->getPriceForCount() }}</td>
-                        </tr>
+
+                    @endforeach
                         <tr>
                             <td colspan="3">Общая стоимость:</td>
                             <td>{{ $order->getFullPrice() }}</td>
