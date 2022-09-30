@@ -29,6 +29,7 @@ class UpdateProductRequest extends FormRequest
             'category_id' => 'nullable|string',
             'name' => 'nullable|string',
             'description' => 'nullable|string',
+            'code' => 'nullable|string',
             'price' => 'nullable|integer'
         ];
     }
