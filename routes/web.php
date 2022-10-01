@@ -1,8 +1,11 @@
 <?php
 
-use App\Http\Controllers\MainController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BasketController;
 use Illuminate\Support\Facades\Route;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,11 +18,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [MainController::class, 'index'])->name('index');
+Route::get('/', [ProductController::class, 'index'])->name('index');
 
 Auth::routes();
 
-Route::get('/categories', [MainController::class, 'categories'])->name('categories');
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
 
 Route::get('/basket', [BasketController::class, 'basket'])->name('basket');
 Route::get('/basket/place', [BasketController::class, 'basketPlace'])->name('basket-place');
@@ -27,5 +30,5 @@ Route::post('/basket/add/{id}', [BasketController::class, 'basketAdd'])->name('b
 Route::post('/basket/remove/{id}', [BasketController::class, 'basketRemove'])->name('basket-remove');
 Route::post('/basket/place', [BasketController::class, 'basketConfirm'])->name('basket-confirm');
 
-Route::get('/{category}', [MainController::class, 'category'])->name('category');
-Route::get('/{category}/{product?}', [MainController::class, 'product'])->name('product');
+Route::get('/{category}', [CategoryController::class, 'category'])->name('category');
+Route::get('/{category}/{product?}', [ProductController::class, 'product'])->name('product');
